@@ -1,0 +1,28 @@
+.panel-heading{
+    font-weight: bold;
+    color: blue;
+    font-size: 20px;
+}
+i{
+    color:white;
+    font-size: 50px;
+}
+img{
+    width: 277px;
+    height: 277px;    
+}
+h4{
+    color:blue;
+
+}
+h4,table{
+    margin-left: 10px;
+}
+th{
+    color:orangered
+}
+
+
+
+
+

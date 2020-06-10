@@ -1,0 +1,90 @@
+<div class="bs-example">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <i class="fa fa-github"></i>&nbsp;&nbsp;
+        <a href="#" class="navbar-brand">Ramya Github App</a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <!-- <div class="navbar-nav">
+                <a href="#" class="nav-item nav-link active">Home</a>
+                <a href="#" class="nav-item nav-link">About</a>
+                <a href="#" class="nav-item nav-link">Products</a>
+            </div> -->
+            <form action="" class="form-inline ml-auto">
+                <input type="text" class="form-control mr-sm-2" placeholder="Search" [(ngModel)]="username"
+                    name="username" (keyup)="findUsersProfile()">
+                <a href="{{profile.html_url}}" target="_blank" class="btn btn-outline-light">View Profile on Github</a>
+            </form>
+        </div>
+    </nav>
+</div><br>
+<div *ngIf="profile">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            {{profile.name}}<small>({{profile.login}})</small>
+            <span *ngIf="profile.company">, Works @ {{profile.company}},</span>
+            {{profile.location}}
+        </div><br>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-3">
+                    <img src="{{profile.avatar_url}}" class="img-circle img-responsive" alt="Profile image">
+                </div>
+                <div class="col-sm-3">
+                    <ul class="list-group">
+                        <li class="list-group-item" *ngIf="profile.bio">{{profile.bio}}</li>
+                        <li class="list-group-item" *ngIf="profile.blog"><a href="{{profile.blog}}"
+                                target="_blank">{{profile.blog}}</a></li>
+                        <li class="list-group-item" *ngIf="profile.email"><a href="mailto:{{profile.email}}"
+                                target="_blank">{{profile.email}}</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4">
+                    <div>
+                        <p>
+                            <span class="label label-default"><button type="button"
+                                    class="btn btn-primary">{{profile.followers}} Followers</button></span>&nbsp;
+                            <span class="label label-primary"><button type="button"
+                                    class="btn btn-secondary">{{profile.following}} Following</button></span>&nbsp;
+                            <span class="label label-success"><button type="button"
+                                    class="btn btn-warning">{{profile.public_repos}} Public
+                                    Repos</button></span>
+                        </p>
+                        <p>
+                            <a href="{{profile.html_url}}" target="_blank" class="btn btn-success btn-sm">
+                                View Profile on github
+                            </a>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+        </div><br>
+        <div class="row">
+            <h4>Repositories</h4>
+            
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="repo-name">User Repos</th>
+                        <th class="repo-url">View Page on Github</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let repo of pageOfItems">
+                        <td class="product-name">{{repo.name}}</td>
+                        <td><a href="{{repo.html_url}}" target="_blank">{{repo.html_url}}</a></td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+        </div>
+        <app-paginate [items]="repos" (changePage)="pageClick($event)" [pageSize]="pageSize"></app-paginate>      
+
+
+    </div>
+</div>
