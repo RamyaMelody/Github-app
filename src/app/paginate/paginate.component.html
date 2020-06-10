@@ -1,6 +1,6 @@
 <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
     <li [ngClass]="{disabled:pager.currentPage === 1}" class="page-item first-item">
-        <a href="#top" (click)="setPage(1)" class="page-link">First</a>
+        <a href="#" (click)="setPage(1)" class="page-link">First</a>
     </li>
     <li [ngClass]="{disabled:pager.currentPage === 1}" class="page-item previous-item">
         <a href="#" (click)="setPage(pager.currentPage - 1)" class="page-link">Previous</a>
