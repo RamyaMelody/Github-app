@@ -14,7 +14,7 @@
             <form action="" class="form-inline ml-auto">
                 <input type="text" class="form-control mr-sm-2" placeholder="Search" [(ngModel)]="username"
                     name="username" (keyup)="findUsersProfile()">
-                <a href="{{profile.html_url}}" target="_blank" class="btn btn-outline-light">View Profile on Github</a>
+                <a href="{{profile?.html_url}}" target="_blank" class="btn btn-outline-light">View Profile on Github</a>
             </form>
         </div>
     </nav>
@@ -52,7 +52,7 @@
                                     Repos</button></span>
                         </p>
                         <p>
-                            <a href="{{profile.html_url}}" target="_blank" class="btn btn-success btn-sm">
+                            <a href="{{profile?.html_url}}" target="_blank" class="btn btn-success btn-sm">
                                 View Profile on github
                             </a>
                         </p>
@@ -76,7 +76,7 @@
                 <tbody>
                     <tr *ngFor="let repo of pageOfItems">
                         <td class="product-name">{{repo.name}}</td>
-                        <td><a href="{{repo.html_url}}" target="_blank">{{repo.html_url}}</a></td>
+                        <td><a href="{{repo?.html_url}}" target="_blank">{{repo.html_url}}</a></td>
                     </tr>
 
 
